@@ -52,7 +52,7 @@
                     "
                 >
                     <li>
-                        <!-- <a
+                        <a
                             class="dflex-ac-jc w-ba"
                             @click="showLevel"
                             v-if="level == 1 && offline == 1"
@@ -75,15 +75,6 @@
                             class="dflex-ac-jc w-ba"
                             v-else
                             @click="showModal = true"
-                        >
-                            <font-awesome-icon
-                                icon="fa-solid fa-piggy-bank"
-                            />&nbsp; {{ langweb("fe.cashin") }}
-                        </a> -->
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            data_id="1"
-                            @click="showMain"
                         >
                             <font-awesome-icon
                                 icon="fa-solid fa-piggy-bank"
