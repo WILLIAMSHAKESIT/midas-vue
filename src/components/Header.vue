@@ -59,7 +59,7 @@
                         <i class="fa-solid fa-user"></i>
                     </button>
                 </div>
-                <ul class="nav" :class="toggleMobileMenu ? 'bs-ul main-menu sidebar-left d-flex' : 'bs-ul main-menu sidebar-left'">
+                <ul class="nav" :class="toggleMobileMenu ? 'bs-ul main-menu sidebar-left d-flex active' : 'bs-ul main-menu sidebar-left'">
                     <li>
                         <a class="dflex-ac-jc w-ba" id="games-section" data_id="1"  @click="changeTab('tab1')">
                             <span>라이브카지노</span>
@@ -127,15 +127,7 @@
                 
             </div>
         </header>
-        <Carousel
-            class="banner-section w-ba"
-            :autoplay="2000"
-            :wrap-around="true"
-        >
-            <Slide v-for="slide in banners" :key="slide">
-                <img class="banner-bg" :src="slide.imgURL" />
-            </Slide>
-        </Carousel>
+        
         <div id="modal-example" class="modal-vue">
             <div
                 class="overlay"
@@ -611,8 +603,7 @@
 <script>
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
-import { Carousel, Slide } from "vue3-carousel";
-import "vue3-carousel/dist/carousel.css";
+
 
 import Cashin_city from "@/components/Cashin";
 // import ListCashin_city from "@/components/ListCashIn";
@@ -717,17 +708,7 @@ export default {
             total_mn: "",
             listSend_header: [],
             audioSend: 0,
-            banners: [
-                {
-                    imgURL: require("@/assets/img/banner/slide1.jpg")
-                },
-                {
-                    imgURL: require("@/assets/img/banner/slide2.jpg")
-                },
-                {
-                    imgURL: require("@/assets/img/banner/slide3.jpg")
-                }
-            ],
+            
             rightPaneActive: false,
             currentDateTime: '',
         };
@@ -771,8 +752,6 @@ export default {
         Betting_city,
         Gift_city,
         Send_city,
-        Carousel,
-        Slide
     },
     beforeUnmount() {
         clearInterval(this.intervalId);

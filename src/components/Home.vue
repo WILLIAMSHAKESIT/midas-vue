@@ -1,5 +1,10 @@
 <template>
     <div class="wraper-root">
+        <Carousel class="banner-section w-ba" :autoplay="2000" :wrap-around="true">
+            <Slide v-for="slide in banners" :key="slide">
+                <img class="banner-bg" :src="slide.imgURL" />
+            </Slide>
+        </Carousel>
         <main class="page-content w-ba">
             <section class="toggle-section">
                 <div class="container">
@@ -1202,6 +1207,9 @@
 import { useStore } from "vuex";
 import { computed } from "vue";
 import $ from "jquery";
+import { Carousel, Slide } from "vue3-carousel";
+import "vue3-carousel/dist/carousel.css";
+
 $(document).ready(function () {
     $(document).on("click", ".notifyhome_click", function () {
         $(this).parent().find(".substring_content_tbs").show();
@@ -1281,10 +1289,24 @@ export default {
             listGaming: [],
             listGamingsearch: [],
             timeout_icon: null,
-            listFaq: []
+            listFaq: [],
+            banners: [
+                {
+                    imgURL: require("@/assets/img/banner/slide1.jpg")
+                },
+                {
+                    imgURL: require("@/assets/img/banner/slide2.jpg")
+                },
+                {
+                    imgURL: require("@/assets/img/banner/slide3.jpg")
+                }
+            ],
         };
     },
-    components: {},
+    components: {
+        Carousel,
+        Slide
+    },
     created() {
         if (this.token !== null) {
             this.getListnotifiHome();
