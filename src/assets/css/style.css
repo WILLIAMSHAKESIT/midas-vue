@@ -132,7 +132,7 @@ a:focus,
 a:visited {
     text-decoration: none;
 }
-.flex-mobile{
+.flex-mobile {
     display: none !important;
 }
 img {
@@ -280,17 +280,89 @@ body {
     animation: lgAAnim 8s ease infinite;
     max-height: 210px;
 }
-.paginate-ripple{
+.paginate-ripple {
     display: none;
 }
 .logo-city8888 {
+    width: 199px;
     position: absolute;
+    top: 0;
     left: 50%;
-    transform: translateX(-50%);
-    top: -36px;
-    width: 210px;
-    z-index: 99;
-    filter: drop-shadow(0 0 10px #000);
+    transform: translateX(-50%) scale(1);
+    z-index: 100;
+    transition: 0.2s ease-in-out;
+    filter: drop-shadow(0 0 15px #000);
+}
+.top {
+    width: 100%;
+    height: 62px;
+    background: #000;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.top .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.top .container .date {
+    font-size: 0.9em;
+}
+.top .container .btns {
+    display: flex;
+    gap: 10px;
+}
+.top .container .btns .btn {
+    width: 89px;
+}
+.btn-gold {
+    background: linear-gradient(
+        1deg,
+        rgb(130, 89, 6) 0%,
+        rgb(254, 205, 115) 48%,
+        rgb(125, 84, 2) 100%
+    );
+    border-radius: 4px !important;
+    font-weight: 500;
+}
+.btn-gold:hover {
+    filter: brightness(1.1);
+}
+.btn-gold:active,
+.btn-gold:focus {
+    background: linear-gradient(
+        1deg,
+        rgb(130, 89, 6) 0%,
+        rgb(254, 205, 115) 48%,
+        rgb(125, 84, 2) 100%
+    ) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+.nav {
+    display: flex;
+    height: 100%;
+}
+.nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 130px;
+    gap: 0px !important;
+}
+.nav a span:first-child {
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffc053;
+}
+.nav a span:last-child {
+    color: #82642f;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 @keyframes lgABigAnim {
     0% {
@@ -584,42 +656,7 @@ body {
     }
 }
 .header-section {
-    /* width: 100%;
-    height: 88px;
-    background-image: linear-gradient(#261e12, #17110b);
-    border-top: solid 1px #614822;
-    box-shadow: 0 5px 20px rgb(0 0 0 / 60%); */
-    border-bottom: 3px solid #c046e0;
-    border-top: 3px solid #c046e0;
-    height: 82px;
-    width: 100%;
-    position: relative;
-    background: linear-gradient(
-        90deg,
-        rgb(16, 139, 146) 0%,
-        rgb(148, 13, 159) 100%
-    );
-}
-/* .header-section:before {
-    top: 0;
-    border-bottom: solid 1px #3d301f;
-}
-.header-section:before,
-.header-section:after {
-    width: 100%;
-    height: 7px;
-    left: 0;
-}
-.header-section:after {
-    height: 5px;
-    bottom: 0;
-    background-image: linear-gradient(#9f6c40, #4f3319);
-    z-index: 2;
-} */
-/* end css slider */
-.header-section {
-    width: 100%;
-    height: 80px;
+    z-index: 41 !important;
 }
 .icon-panel svg {
     color: #ffd989;
@@ -959,15 +996,15 @@ body {
 .toggle-btn.slot-toggle {
     background-image: url("../img/bg/tab-button-bg2.png");
 }
-.toggle-btn .element{
+.toggle-btn .element {
     position: absolute;
     width: 170px;
     bottom: 0;
 }
-.toggle-btn .element.left{
+.toggle-btn .element.left {
     left: -38px;
 }
-.toggle-btn .element.right{
+.toggle-btn .element.right {
     right: -38px;
 }
 .toggle-btn:hover {
@@ -1212,7 +1249,7 @@ body {
     object-fit: contain;
     width: 100%;
 }
-.casino-section .sc-btn:first-child .glass{
+.casino-section .sc-btn:first-child .glass {
     position: absolute;
     bottom: 0;
     height: 100%;
@@ -3933,7 +3970,11 @@ body::-webkit-scrollbar-thumb {
     cursor: pointer;
 }
 .tabcash {
-    background: radial-gradient( circle, rgb(76, 23, 129) 0%, rgb(14, 6, 23) 100% );
+    background: radial-gradient(
+        circle,
+        rgb(76, 23, 129) 0%,
+        rgb(14, 6, 23) 100%
+    );
     height: 100%;
     display: inline-block;
     width: 340px;
@@ -3983,7 +4024,7 @@ body::-webkit-scrollbar-thumb {
 }
 .titmenu_popup {
     /* background: linear-gradient(#ff5116, #9a2802); */
-    background: radial-gradient(circle,#3b1164 0,#0f031c 100%);
+    background: radial-gradient(circle, #3b1164 0, #0f031c 100%);
     border-radius: 10px;
     padding: 20px 10px;
     font-weight: 700;
@@ -4051,7 +4092,7 @@ body::-webkit-scrollbar-thumb {
 }
 .text_category div {
     /* background: linear-gradient(#ff5116, #9a2802); */
-    background: radial-gradient(circle,#3b1164 0,#0f031c 100%);
+    background: radial-gradient(circle, #3b1164 0, #0f031c 100%);
     border-radius: 10px;
     font-weight: 700;
     font-size: 22px;
@@ -4606,13 +4647,13 @@ pre {
     }
 }
 @media (max-width: 1280px) {
-    .toggle-btn .element{
+    .toggle-btn .element {
         width: 76px;
     }
-    .toggle-btn .element.left{
+    .toggle-btn .element.left {
         left: 0;
     }
-    .toggle-btn .element.right{
+    .toggle-btn .element.right {
         right: 0;
     }
     .main-tab {
@@ -4953,7 +4994,7 @@ pre {
         width: calc(33.333% - 18px);
     }
 }
-.tabcash ul li:first-child{
+.tabcash ul li:first-child {
     background: unset;
 }
 @media (max-width: 767px) {
@@ -5196,7 +5237,6 @@ pre {
     }
     .logo-city8888 {
         top: -36px !important;
-        
     }
     .sc-btn {
         width: calc(50% - 12px);
@@ -5454,11 +5494,11 @@ pre {
         font-size: 15px;
         line-height: 32px;
     }
-    .tabcash ul{
+    .tabcash ul {
         flex-direction: column;
         display: flex;
     }
-    .tabcash ul li{
+    .tabcash ul li {
         width: 100%;
     }
 }
@@ -5514,7 +5554,6 @@ pre {
     }
 }
 
-
-.closetab{
- width: 50px;
+.closetab {
+    width: 50px;
 }

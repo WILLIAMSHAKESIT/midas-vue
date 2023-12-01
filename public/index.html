@@ -6,12 +6,13 @@
             <meta name="viewport" content="width=device-width,initial-scale=1.0">
             <link rel="icon" href="<%= BASE_URL %>favicon.ico">
             <!-- <title><%= htmlWebpackPlugin.options.title %></title> -->
-            <title>title</title>
+            <title>7 Day Happy</title>
             <script>
                 async function logJSONData() {
                     const response = await fetch("https://api.chanel01.com/api/setting");
                     const jsonData = await response.json();
-                    document.title = jsonData.data.title;
+                    // document.title = jsonData.data.title;
+                    document.title = "7 Day Happy";
                 }
                 logJSONData()
             </script>

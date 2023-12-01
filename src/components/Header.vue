@@ -1,19 +1,20 @@
 <template>
     <div id="header_city8888">
-        <Carousel
-            class="banner-section w-ba"
-            :autoplay="2000"
-            :wrap-around="true"
-        >
-            <Slide v-for="slide in banners" :key="slide">
-                <img class="banner-bg" :src="slide.imgURL" />
-            </Slide>
-        </Carousel>
+        
+        <div class="top">
+            <div class="container">
+                <span class="date" id="dateAndTime">12-01-2023, 03:46 UTC</span>
+                <div class="btns">
+                    <button class="btn btn-gold">로그인</button>
+                    <button class="btn btn-gold">회원가입</button>
+                </div> 
+            </div>
+        </div>
         <header class="header-section w-ba header-city88">
             <div class="center logo-city8888">
                 <router-link class="logo" v-bind:to="{ name: 'Home_city' }">
                     <div class="logo88">
-                        <img class="a" src="../assets/images/logo-footer.png?v14" />
+                        <img class="a" src="../assets/img/navbar-logo.png" />
                     </div>
                 </router-link>
             </div>
@@ -44,149 +45,56 @@
                         <i class="fa-solid fa-user"></i>
                     </button>
                 </div>
-                <ul
-                    :class="
-                        toggleMobileMenu
-                            ? 'bs-ul main-menu sidebar-left d-flex'
-                            : 'bs-ul main-menu sidebar-left'
-                    "
-                >
+                <ul class="nav" :class="toggleMobileMenu ? 'bs-ul main-menu sidebar-left d-flex' : 'bs-ul main-menu sidebar-left'">
                     <li>
-                        <!-- <a
-                            class="dflex-ac-jc w-ba"
-                            @click="showLevel"
-                            v-if="level == 1 && offline == 1"
-                        >
-                            <font-awesome-icon
-                                icon="fa-solid fa-piggy-bank"
-                            />&nbsp; {{ langweb("fe.cashin") }}
-                        </a>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            data_id="1"
-                            @click="showMain"
-                            v-else-if="checktoken === true"
-                        >
-                            <font-awesome-icon
-                                icon="fa-solid fa-piggy-bank"
-                            />&nbsp; {{ langweb("fe.cashin") }}
-                        </a>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            v-else
-                            @click="showModal = true"
-                        >
-                            <font-awesome-icon
-                                icon="fa-solid fa-piggy-bank"
-                            />&nbsp; {{ langweb("fe.cashin") }}
-                        </a> -->
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            data_id="1"
-                            @click="showMain"
-                        >
-                            <font-awesome-icon
-                                icon="fa-solid fa-piggy-bank"
-                            />&nbsp; {{ langweb("fe.cashin") }}
+                        <a class="dflex-ac-jc w-ba" data_id="1"  @click="showMain">
+                            <span>{{ langweb("fe.cashin") }}</span>
+                            <span>Deposit</span>
                         </a>
                     </li>
                     <li>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            @click="showLevel"
-                            v-if="level == 1 && offline == 1"
-                        >
-                            <font-awesome-icon
-                                icon="fa-solid fa-piggy-bank"
-                            />&nbsp; {{ langweb("fe.cashout") }}
+                        <a class="dflex-ac-jc w-ba" @click="showLevel" v-if="level == 1 && offline == 1">
+                            
+                            <span>{{ langweb("fe.cashout") }}</span>
+                            <span>Withdraw</span>
                         </a>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            data_id="2"
-                            @click="showMain"
-                            v-else-if="checktoken === true"
-                        >
-                            <font-awesome-icon icon="fa-solid fa-vault" />&nbsp;
-                            {{ langweb("fe.cashout") }}
+                        <a class="dflex-ac-jc w-ba" data_id="2" @click="showMain" v-else-if="checktoken === true">
+                            <span>{{ langweb("fe.cashout") }}</span>
+                            <span>Withdraw</span>
                         </a>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            v-else
-                            @click="showModal = true"
-                        >
-                            <font-awesome-icon icon="fa-solid fa-vault" />&nbsp;
-                            {{ langweb("fe.cashout") }}
+                        <a class="dflex-ac-jc w-ba" v-else @click="showModal = true">
+                            <span>{{ langweb("fe.cashout") }}</span>
+                            <span>Withdraw</span>
                         </a>
                     </li>
                     <li>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            data_id="3"
-                            @click="showMain"
-                            v-if="checktoken === true"
-                        >
-                            <font-awesome-icon icon="fa-solid fa-bell" />&nbsp;
-                            {{ langweb("fe.notification") }}
-                            <sup class="number_info" v-if="notifi > 0">{{
-                                notifi
-                            }}</sup>
+                        <a class="dflex-ac-jc w-ba" data_id="3"  @click="showMain" v-if="checktoken">
+                            <sup class="number_info" v-if="notifi > 0">{{ notifi }}</sup>
+                            <span>{{ langweb("fe.notification") }}</span>
+                            <span>Notification</span>
                         </a>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            v-else
-                            @click="showModal = true"
-                        >
-                            <font-awesome-icon icon="fa-solid fa-bell" />&nbsp;
-                            {{ langweb("fe.notification") }}
+                        <a class="dflex-ac-jc w-ba" v-else @click="showModal = true" >
+                            <span>{{ langweb("fe.notification") }}</span>
+                            <span>Notification</span>
                         </a>
                     </li>
                     <li>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            data_id="4"
-                            @click="showMain"
-                            v-if="checktoken === true"
-                        >
-                            <font-awesome-icon
-                                icon="fa-solid fa-comment-dots"
-                            />&nbsp; {{ langweb("fe.chat") }}
-                            <sup class="number_info" v-if="chat > 0">{{
-                                chat
-                            }}</sup>
+                        <a class="dflex-ac-jc w-ba" data_id="4" @click="checktoken ? showMain : showModal">
+                          
+                            <sup class="number_info" v-if="chat > 0 && checktoken === true">{{ chat }}</sup>
+                            <span>  {{ langweb("fe.chat") }}</span>
+                            <span>Inquiry</span>
                         </a>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            v-else
-                            @click="showModal = true"
-                        >
-                            <font-awesome-icon
-                                icon="fa-solid fa-comment-dots"
-                            />&nbsp; {{ langweb("fe.chat") }}
-                        </a>
-                        
                     </li>
                     <li>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            data_id="11"
-                            @click="showMain"
-                            v-if="checktoken === true"
-                        >
-                            <font-awesome-icon
-                                icon="fa-solid fa-comments"
-                            />&nbsp; {{ langweb("fe.sends") }}
-                            <sup class="number_info" v-if="send > 0">{{
-                                send
-                            }}</sup>
+                        <a class="dflex-ac-jc w-ba" data_id="11" @click="showMain" v-if="checktoken === true">
+                            <sup class="number_info" v-if="send > 0">{{ send }}</sup>
+                            <span>{{ langweb("fe.sends") }}</span>
+                            <span>Note</span>
                         </a>
-                        <a
-                            class="dflex-ac-jc w-ba"
-                            v-else
-                            @click="showModal = true"
-                        >
-                            <font-awesome-icon
-                                icon="fa-solid fa-comments"
-                            />&nbsp; {{ langweb("fe.sends") }}
+                        <a class="dflex-ac-jc w-ba" v-else @click="showModal = true">
+                            <span>{{ langweb("fe.sends") }}</span>
+                            <span>Note</span>
                         </a>
                     </li>
                 </ul>
@@ -302,6 +210,15 @@
                 </div>
             </div>
         </header>
+        <Carousel
+            class="banner-section w-ba"
+            :autoplay="2000"
+            :wrap-around="true"
+        >
+            <Slide v-for="slide in banners" :key="slide">
+                <img class="banner-bg" :src="slide.imgURL" />
+            </Slide>
+        </Carousel>
         <div id="modal-example" class="modal-vue">
             <div
                 class="overlay"
