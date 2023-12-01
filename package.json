@@ -18,6 +18,7 @@
     "bootstrap-vue": "^2.23.1",
     "jquery": "^3.6.3",
     "lodash.unescape": "^4.0.1",
+    "moment": "^2.29.4",
     "vue": "^3.2.13",
     "vue-axios": "^3.5.2",
     "vue-cookies": "^1.8.3",

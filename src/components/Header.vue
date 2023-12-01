@@ -1,10 +1,35 @@
 <template>
     <div id="header_city8888">
-        
         <div class="top">
             <div class="container">
-                <span class="date" id="dateAndTime">12-01-2023, 03:46 UTC</span>
-                <div class="btns">
+                <span class="date" id="dateAndTime">{{ currentDateTime }}</span>
+                <div class="bal-container ml-auto" :class="{ active: rightPaneActive }" v-if="checktoken">
+                    <div class="user-money">
+                        <div class="money">
+                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                            <span>{{
+                                new Intl.NumberFormat("en-US", {
+                                    minimumFractionDigits: 0
+                                }).format(total_mn)
+                            }}</span>
+                        </div>
+                        <div class="money">
+                            <i class="fa-solid fa-money-bill"></i>
+                            <span>{{
+                                new Intl.NumberFormat("en-US", {
+                                    minimumFractionDigits: 0
+                                }).format(point)
+                            }}</span>
+                        </div>
+                    </div>
+                    <button type="button" data_id="5" @click="showMain" class="openMypage text-amber-400 hover:text-white font-medium text-sm text-center leading-none whitespace-nowrap">
+                        <i class="fa-solid fa-circle-user text-lg text-amber-400 hover:text-white"></i>{{ nameuser }}
+                    </button>
+                    <button type="button" @click="logout" class="whitespace-nowrap text-amber-400 hover:text-white font-medium text-sm text-center leading-none">
+                        <i class="fa-solid fa-right-from-bracket text-amber-400 hover:text-white"></i>
+                    </button>
+                </div>
+                <div class="btns" v-else>
                     <button class="btn btn-gold">로그인</button>
                     <button class="btn btn-gold">회원가입</button>
                 </div> 
@@ -18,20 +43,9 @@
                     </div>
                 </router-link>
             </div>
-            <div class="container dflex-ac-jc h-100 max-width-gib header-mb">
-                <div
-                    :class="
-                        toggleMobileMenu || rightPaneActive
-                            ? 'overlay d-block'
-                            : 'overlay'
-                    "
-                    @click="
-                        (toggleMobileMenu = false), (rightPaneActive = false)
-                    "
-                ></div>
-                <div
-                    class="flex-mobile align-items-center justify-content-between p-3 w-100 centered"
-                >
+            <div class="container dflex-ac-jc h-100 w-100 header-mb">
+                <div :class="toggleMobileMenu || rightPaneActive ? 'overlay d-block' : 'overlay'" @click="(toggleMobileMenu = false), (rightPaneActive = false)" ></div>
+                <div class="flex-mobile align-items-center justify-content-between p-3 w-100 centered">
                     <button
                         class="mobile-toggle menu"
                         @click="toggleMobileMenu = true"
@@ -46,6 +60,48 @@
                     </button>
                 </div>
                 <ul class="nav" :class="toggleMobileMenu ? 'bs-ul main-menu sidebar-left d-flex' : 'bs-ul main-menu sidebar-left'">
+                    <li>
+                        <a class="dflex-ac-jc w-ba" id="games-section" data_id="1"  @click="changeTab('tab1')">
+                            <span>라이브카지노</span>
+                            <span>live casino</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dflex-ac-jc w-ba" id="games-section" data_id="1"  @click="changeTab('tab2')">
+                            <span>슬롯게임</span>
+                            <span>slot</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dflex-ac-jc w-ba" data_id="11" @click="showMain" v-if="checktoken === true">
+                            <sup class="number_info" v-if="send > 0">{{ send }}</sup>
+                            <span>{{ langweb("fe.sends") }}</span>
+                            <span>Note</span>
+                        </a>
+                        <a class="dflex-ac-jc w-ba" v-else @click="showModal = true">
+                            <span>{{ langweb("fe.sends") }}</span>
+                            <span>Note</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dflex-ac-jc w-ba" data_id="4" @click="checktoken ? showMain : showModal">
+                          
+                            <sup class="number_info" v-if="chat > 0 && checktoken === true">{{ chat }}</sup>
+                            <span>  {{ langweb("fe.chat") }}</span>
+                            <span>Inquiry</span>
+                        </a>
+                    </li>
+                    <li class="ml-auto">
+                        <a class="dflex-ac-jc w-ba" data_id="3"  @click="showMain" v-if="checktoken">
+                            <sup class="number_info" v-if="notifi > 0">{{ notifi }}</sup>
+                            <span>{{ langweb("fe.notification") }}</span>
+                            <span>Notice</span>
+                        </a>
+                        <a class="dflex-ac-jc w-ba" v-else @click="showModal = true" >
+                            <span>{{ langweb("fe.notification") }}</span>
+                            <span>Notice</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="dflex-ac-jc w-ba" data_id="1"  @click="showMain">
                             <span>{{ langweb("fe.cashin") }}</span>
@@ -67,147 +123,8 @@
                             <span>Withdraw</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="dflex-ac-jc w-ba" data_id="3"  @click="showMain" v-if="checktoken">
-                            <sup class="number_info" v-if="notifi > 0">{{ notifi }}</sup>
-                            <span>{{ langweb("fe.notification") }}</span>
-                            <span>Notification</span>
-                        </a>
-                        <a class="dflex-ac-jc w-ba" v-else @click="showModal = true" >
-                            <span>{{ langweb("fe.notification") }}</span>
-                            <span>Notification</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dflex-ac-jc w-ba" data_id="4" @click="checktoken ? showMain : showModal">
-                          
-                            <sup class="number_info" v-if="chat > 0 && checktoken === true">{{ chat }}</sup>
-                            <span>  {{ langweb("fe.chat") }}</span>
-                            <span>Inquiry</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dflex-ac-jc w-ba" data_id="11" @click="showMain" v-if="checktoken === true">
-                            <sup class="number_info" v-if="send > 0">{{ send }}</sup>
-                            <span>{{ langweb("fe.sends") }}</span>
-                            <span>Note</span>
-                        </a>
-                        <a class="dflex-ac-jc w-ba" v-else @click="showModal = true">
-                            <span>{{ langweb("fe.sends") }}</span>
-                            <span>Note</span>
-                        </a>
-                    </li>
                 </ul>
-                <div
-                    class="bal-container ml-auto"
-                    :class="{ active: rightPaneActive }"
-                >
-                    <div class="top-form" v-if="checktoken">
-                        <div class="user-money">
-                            <div class="money">
-                                <i class="fa-solid fa-hand-holding-dollar"></i>
-                                <span>{{
-                                    new Intl.NumberFormat("en-US", {
-                                        minimumFractionDigits: 0
-                                    }).format(total_mn)
-                                }}</span>
-                            </div>
-                            <div class="money">
-                                <i class="fa-solid fa-money-bill"></i>
-                                <span>{{
-                                    new Intl.NumberFormat("en-US", {
-                                        minimumFractionDigits: 0
-                                    }).format(point)
-                                }}</span>
-                            </div>
-                        </div>
-                        <button
-                            type="button"
-                            data_id="5"
-                            @click="showMain"
-                            class="openMypage text-amber-400 bg-purple-950 hover:bg-purple-900 font-medium text-sm px-5 py-2.5 text-center leading-none whitespace-nowrap"
-                        >
-                            <i
-                                class="fa-solid fa-circle-user text-lg text-amber-400"
-                            ></i
-                            >{{ nameuser }}
-                        </button>
-                        <button
-                            type="button"
-                            @click="logout"
-                            class="whitespace-nowrap bg-amber-500 text-white hover:text-white hover:bg-amber-400 font-medium text-sm px-5 py-2.5 text-center leading-none"
-                        >
-                            <i class="fa-solid fa-right-from-bracket"></i
-                            >로그아웃
-                        </button>
-                    </div>
-                    <form
-                        @submit="login"
-                        method="post"
-                        v-if="checkform === true"
-                    >
-                        <div class="before-login active">
-                            <div class="desktop">
-                                <div class="dflex-ac-jc gap-sm">
-                                    <div class="input-panel dflex-ac-jc">
-                                        <div class="icon-panel dflex-ac-jc">
-                                            <font-awesome-icon
-                                                icon="fa-solid fa-user-tie"
-                                            />
-                                        </div>
-                                        <input
-                                            type="text"
-                                            name="username_lg"
-                                            v-model="username_lg"
-                                            :placeholder="
-                                                langweb('fe.username')
-                                            "
-                                            id="username_lg"
-                                            autocomplete="off"
-                                        />
-                                    </div>
-                                    <div class="input-panel dflex-ac-jc">
-                                        <div class="icon-panel dflex-ac-jc">
-                                            <font-awesome-icon
-                                                icon="fa-solid fa-unlock-alt"
-                                            />
-                                        </div>
-                                        <input
-                                            type="password"
-                                            name="password_lg"
-                                            v-model="password_lg"
-                                            :placeholder="
-                                                langweb('fe.passwords')
-                                            "
-                                            id="password_lg"
-                                            autocomplete="off"
-                                        />
-                                    </div>
-                                    <button
-                                        type="button"
-                                        class="register_mobile btn-red join-link"
-                                        @click="showModals = true"
-                                    >
-                                        {{ langweb("fe.registers") }}
-                                    </button>
-                                    <button
-                                        type="submit"
-                                        class="btn-yellow login-btn"
-                                    >
-                                        {{ langweb("fe.login") }}
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="register_desktop btn-red join-link"
-                                        @click="showModals = true"
-                                    >
-                                        {{ langweb("fe.registers") }}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                
             </div>
         </header>
         <Carousel
@@ -712,6 +629,7 @@ import Send_city from "@/components/Send";
 
 import { useStore } from "vuex";
 import { computed } from "vue";
+import moment from 'moment';
 import $ from "jquery";
 $(document).ready(function () {
     $(document).on("click", ".delete_popup", function () {
@@ -810,7 +728,8 @@ export default {
                     imgURL: require("@/assets/img/banner/slide3.jpg")
                 }
             ],
-            rightPaneActive: false
+            rightPaneActive: false,
+            currentDateTime: '',
         };
     },
     mounted() {
@@ -820,6 +739,11 @@ export default {
             this.checktoken = true;
             this.checkform = false;
         }
+
+        this.updateDateTime();
+        this.intervalId = setInterval(() => {
+            this.updateDateTime();
+        }, 1000);
     },
     created() {
         this.token = window.localStorage.getItem("token");
@@ -850,6 +774,9 @@ export default {
         Carousel,
         Slide
     },
+    beforeUnmount() {
+        clearInterval(this.intervalId);
+    },
     methods: {
         // handleScroll () {
         //     if (this.scTimer) return
@@ -865,6 +792,10 @@ export default {
         //         behavior: "smooth"
         //     })
         // },
+        updateDateTime() {
+            const now = new Date();
+            this.currentDateTime = moment(now).format('YYYY-MM-DD HH:mm:ss');
+        },
         test() {
             console.log("test");
         },
