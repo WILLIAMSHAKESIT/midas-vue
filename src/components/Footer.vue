@@ -1,11 +1,8 @@
 <template>
     <footer class="footer-section w-ba" style="z-index: 1">
         <div class="container max-width-gib">
-            <img
-                class="footer-logo"
-                src="../assets/images/logo-footer.png?v14"
-            />
             <div class="row">
+                <hr>
                 <div class="provider-logo">
                     <img src="../assets/images/redgold.png" class="rg" />
                     <img src="../assets/images/ag.png" />
@@ -29,9 +26,13 @@
                     <img src="../assets/images/genesis.png" />
                 </div>
             </div>
+             <img
+                class="footer-logo"
+                src="../assets/images/logo-footer.png?v14"
+            />
             <div class="copyright w-ba">
-                <p class="mb-0 mt-3 text-white">
-                    ⓒ COPYRIGHT NATURAL CASINO ALL RIGHTS RESERVED.
+                <p class="mb-0 mt-3">
+                    ⓒ COPYRIGHT SEVEN DAY HAPPY ALL RIGHTS RESERVED.
                 </p>
             </div>
         </div>
