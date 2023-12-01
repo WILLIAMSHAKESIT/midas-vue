@@ -1,5 +1,10 @@
 <template>
     <div class="wraper-root">
+        <Carousel class="banner-section w-ba" :autoplay="2000" :wrap-around="true">
+            <Slide v-for="slide in banners" :key="slide">
+                <img class="banner-bg" :src="slide.imgURL" />
+            </Slide>
+        </Carousel>
         <main class="page-content w-ba" id="games-section">
             <section class="toggle-section">
                 <div class="container">
@@ -111,11 +116,12 @@
                             <div class="title-panel dflex-ac-jc mr-auto">
                                 <div class="icon-panel dflex-ac-jc">
                                     <img
-                                        src="../assets/img/icons/gold-question.png"
+                                        src="../assets/img/icons/faq-icon.png"
                                     />
                                 </div>
                                 <span>{{ langweb("fe.faq") }}</span>
                             </div>
+                            <button class="more-btn event-link dflex-ac-jc">전체보기</button>
                         </div>
                         <div class="content w-b btm-event-section">
                             <table class="w-100">
@@ -230,30 +236,10 @@
                     </div>
                     <div class="realtime-board w-ba btm-finance-section">
                         <div class="realtime-nav dflex-ac-jc">
-                            <button
-                                type="button"
-                                v-bind:class="{
-                                    active: tabSelecteds == 'tab3'
-                                }"
-                                v-on:click="changeTabs('tab3')"
-                            >
-                                <img
-                                    src="@/assets/img/icons/trophy.png"
-                                    alt=""
-                                />
+                            <button type="button" v-bind:class="{ active: tabSelecteds == 'tab3' }" v-on:click="changeTabs('tab3')">
                                 {{ langweb("fe.tabco") }}
                             </button>
-                            <button
-                                type="button"
-                                v-bind:class="{
-                                    active: tabSelecteds == 'tab4'
-                                }"
-                                v-on:click="changeTabs('tab4')"
-                            >
-                                <img
-                                    src="@/assets/img/icons/crown.png"
-                                    alt=""
-                                />
+                            <button type="button" v-bind:class="{ active: tabSelecteds == 'tab4' }" v-on:click="changeTabs('tab4')">
                                 {{ langweb("fe.tabci") }}
                             </button>
                         </div>
@@ -350,13 +336,13 @@
                             <div class="title-panel dflex-ac-jc mr-auto">
                                 <div class="icon-panel">
                                     <img
-                                        src="../assets/images/notice-icon.png"
+                                        src="../assets/img/icons/announcement-icon.png"
                                         class="img_loahome"
                                     />
                                 </div>
                                 <span>{{ langweb("fe.notification") }}</span>
                             </div>
-                            <!-- <button class="more-btn notice-link dflex-ac-jc">더보기 111</button> -->
+                            <button class="more-btn notice-link dflex-ac-jc">전체보기</button>
                         </div>
                         <div class="content w-b btm-notice-section">
                             <table class="w-100">
@@ -1165,6 +1151,9 @@ import { useStore } from "vuex";
 import { computed } from "vue";
 import $ from "jquery";
 import { mapState } from 'vuex';
+import { Carousel, Slide } from "vue3-carousel";
+import "vue3-carousel/dist/carousel.css";
+
 $(document).ready(function () {
     $(document).on("click", ".notifyhome_click", function () {
         $(this).parent().find(".substring_content_tbs").show();
@@ -1247,10 +1236,24 @@ export default {
             listGaming: [],
             listGamingsearch: [],
             timeout_icon: null,
-            listFaq: []
+            listFaq: [],
+            banners: [
+                {
+                    imgURL: require("@/assets/img/banner/slide1.jpg")
+                },
+                {
+                    imgURL: require("@/assets/img/banner/slide2.jpg")
+                },
+                {
+                    imgURL: require("@/assets/img/banner/slide3.jpg")
+                }
+            ],
         };
     },
-    components: {},
+    components: {
+        Carousel,
+        Slide
+    },
     created() {
         if (this.token !== null) {
             this.getListnotifiHome();
