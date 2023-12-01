@@ -7,12 +7,16 @@ const store = createStore({
         lang: [],
         // title: []
         language: 'kr',
-        user: []
+        user: [],
+        gameTab:'casino',
     },
     getters:{
         
     },
     mutations:{
+        changeTab(state,payload) {
+            state.gameTab = payload;
+        },
         changLang(state) {
             axios.get(`https://api.chanel01.com/api/language`).then((res) => {
                 // state.lang = [...state.lang, res.data.data.language];

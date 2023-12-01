@@ -174,6 +174,9 @@ Explorer 10-11 */
     /* Microsoft Edge */
     color: #8f8c83 !important;
 }
+ul.nav.main-menu li a span{
+    pointer-events: none;
+}
 .route-content {
     margin: 8rem auto !important;
     margin-bottom: 10rem;
@@ -647,7 +650,9 @@ header .top-form .user-money .money {
     align-items: center;
     gap: 10px;
 }
-
+.max-w-full{
+    max-width: 100% !important;
+}
 .subpage-wrapper {
     position: fixed;
     top: 0;
@@ -657,6 +662,10 @@ header .top-form .user-money .money {
     background-color: rgba(0, 0, 0, 0.7803921569);
     z-index: 100;
     display: none;
+}
+.subpage-wrapper.login .subpage-container{
+    max-width: 400px;
+    height: 350px !important;
 }
 .subpage-wrapper .form-control {
     background-color: #2e1f08;

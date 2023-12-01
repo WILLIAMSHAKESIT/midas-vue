@@ -1,10 +1,10 @@
 <template>
     <div class="wraper-root">
-        <main class="page-content w-ba">
+        <main class="page-content w-ba" id="games-section">
             <section class="toggle-section">
                 <div class="container">
                     <div class="main-tab">
-                        <a href="javascript:void(0)" @click="changeTab('tab1')">
+                        <a href="javascript:void(0)"  @click="$store.commit('changeTab', 'casino')">
                             <img src="../assets/img/elements/casino-img.png" alt="">
                             <div class="box-bg">
                                 <div class="box-text left">
@@ -14,7 +14,7 @@
                                 <img src="../assets/img/elements/casino-button-bg.png" alt="">
                             </div>
                         </a>
-                        <a href="javascript:void(0)" @click="changeTab('tab2')">
+                        <a href="javascript:void(0)"  @click="$store.commit('changeTab', 'slot')">
                             <img src="../assets/img/elements/slot-img.png" alt="">
                             <div class="box-bg">
                                 <div class="box-text right">
@@ -29,7 +29,7 @@
                 <div class="tab-content-toogle game-list">
                     <section class="game-provider">
                         <div class="container max-width-gib">
-                            <div class="tab1" v-if="tabSelected === 'tab1'">
+                            <div class="tab1" v-if="gameTab === 'casino'">
                                 <div class="casino-section sc-section">
                                     <div class="w-100 game-card-parent casino">
                                         <a href="javascript:void(0)" v-for="(item, index) in listGameCasino" :key="index" class="game-card animate__animated animate__fadeIn">
@@ -55,66 +55,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab2" v-if="tabSelected === 'tab2'">
+                            <div class="tab2" v-if="gameTab === 'slot'">
                                 <div class="slot-section sc-section active">
                                     <div class="game-card-parent slot w-100">
-                                        <!-- <a
-                                            class="sc-btn w-ba"
-                                            style="animation-delay: 0s"
-                                            v-for="(
-                                                item, index
-                                            ) in listGameSlot"
-                                            v-bind:key="index"
-                                        >
-                                            <div class="g-panel w-ba">
-                                                <div class="g-cont">
-                                                    <img
-                                                        class="g-img"
-                                                        :src="item.image3"
-                                                        style="margin: auto"
-                                                    />
-                                                    <button
-                                                        type="button"
-                                                        v-if="token === null"
-                                                        @click="
-                                                            showModal = true
-                                                        "
-                                                        class="play-btn btn-yellow"
-                                                    >
-                                                        {{ langweb("fe.play") }}
-                                                    </button>
-                                                    <button
-                                                        type="button"
-                                                        v-else-if="
-                                                            item.maintenance ==
-                                                            1
-                                                        "
-                                                        @click="
-                                                            getMaintenance()
-                                                        "
-                                                        class="play-btn btn-yellow"
-                                                    >
-                                                        {{ langweb("fe.play") }}
-                                                    </button>
-                                                    <button
-                                                        type="button"
-                                                        class="play-btn btn-yellows"
-                                                        :data_name="item.title"
-                                                        :data_id="item.code"
-                                                        v-else
-                                                        @click="showItemGame"
-                                                    >
-                                                        {{ langweb("fe.play") }}
-                                                    </button>
-                                                </div>
-                                                <div class="g-info">
-                                                    <span class="g-name">{{
-                                                        item.title
-                                                    }}</span>
-                                                </div>
-                                                <div class="glass"></div>
-                                            </div>
-                                        </a> -->
                                         <a href="javascript:void(0)" v-for="(item, index) in listGameSlot" :key="index" class="game-card animate__animated animate__fadeIn">
                                             <div class="game-card-body">
                                                 <img :src="item.image3" alt="">
@@ -173,7 +116,6 @@
                                 </div>
                                 <span>{{ langweb("fe.faq") }}</span>
                             </div>
-                            <!-- <button class="more-btn event-link dflex-ac-jc">더보기</button> -->
                         </div>
                         <div class="content w-b btm-event-section">
                             <table class="w-100">
@@ -1222,6 +1164,7 @@
 import { useStore } from "vuex";
 import { computed } from "vue";
 import $ from "jquery";
+import { mapState } from 'vuex';
 $(document).ready(function () {
     $(document).on("click", ".notifyhome_click", function () {
         $(this).parent().find(".substring_content_tbs").show();
@@ -1270,6 +1213,9 @@ export default {
                 return variable;
             }
         };
+    },
+    computed: {
+        ...mapState(['gameTab']),
     },
     data() {
         return {

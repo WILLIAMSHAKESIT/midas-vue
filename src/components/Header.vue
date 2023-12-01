@@ -30,8 +30,8 @@
                     </button>
                 </div>
                 <div class="btns" v-else>
-                    <button class="btn btn-gold">로그인</button>
-                    <button class="btn btn-gold">회원가입</button>
+                    <button class="btn btn-gold" @click="loginModalOpen = true">{{ langweb("fe.login") }}</button>
+                    <button class="btn btn-gold" @click="showModals = true">{{ langweb("fe.registers") }}</button>
                 </div> 
             </div>
         </div>
@@ -61,13 +61,13 @@
                 </div>
                 <ul class="nav" :class="toggleMobileMenu ? 'bs-ul main-menu sidebar-left d-flex' : 'bs-ul main-menu sidebar-left'">
                     <li>
-                        <a class="dflex-ac-jc w-ba" id="games-section" data_id="1"  @click="changeTab('tab1')">
+                        <a href="#games-section" class="dflex-ac-jc w-ba"  @click="$store.commit('changeTab', 'casino')">
                             <span>라이브카지노</span>
                             <span>live casino</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dflex-ac-jc w-ba" id="games-section" data_id="1"  @click="changeTab('tab2')">
+                        <a href="#games-section" class="dflex-ac-jc w-ba" @click="$store.commit('changeTab', 'slot')">
                             <span>슬롯게임</span>
                             <span>slot</span>
                         </a>
@@ -84,10 +84,13 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dflex-ac-jc w-ba" data_id="4" @click="checktoken ? showMain : showModal">
-                          
+                        <a class="dflex-ac-jc w-ba" data_id="4" v-if="checktoken" @click="showMain">
                             <sup class="number_info" v-if="chat > 0 && checktoken === true">{{ chat }}</sup>
                             <span>  {{ langweb("fe.chat") }}</span>
+                            <span>Inquiry</span>
+                        </a>
+                        <a class="dflex-ac-jc w-ba" data_id="4"  v-else  @click="showModal = true">
+                            <span>{{ langweb("fe.chat") }}</span>
                             <span>Inquiry</span>
                         </a>
                     </li>
@@ -110,7 +113,6 @@
                     </li>
                     <li>
                         <a class="dflex-ac-jc w-ba" @click="showLevel" v-if="level == 1 && offline == 1">
-                            
                             <span>{{ langweb("fe.cashout") }}</span>
                             <span>Withdraw</span>
                         </a>
@@ -124,7 +126,6 @@
                         </a>
                     </li>
                 </ul>
-                
             </div>
         </header>
         <Carousel
@@ -340,6 +341,53 @@
                         <button class="btn btn-primary mx-auto">
                             {{ langweb("fe.signup") }}
                         </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="subpage-wrapper show login" v-if="loginModalOpen">
+            <div class="subpage-container register-modal">
+                <button class="close-subpage" @click="loginModalOpen = false">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <form
+                    class="subpage-inner sign-up"
+                    @submit="login"
+                    method="POST"
+                >
+                    <div class="container">
+                        <div class="mt-4 mb-4">
+                            <h1 class=""> {{ langweb("fe.login") }}</h1>
+                        </div>
+                        <div class="mb-4">
+                            <input
+                                type="text"
+                                name="username_lg"
+                                v-model="username_lg"
+                                :placeholder="
+                                    langweb('fe.username')
+                                "
+                                id="username_lg"
+                                autocomplete="off"
+                                class="form-control"
+                            />
+                        </div>
+                        <div class="mb-4">
+                            <input
+                                type="password"
+                                name="password_lg"
+                                v-model="password_lg"
+                                autocomplete="off"
+                                :placeholder="langweb('fe.passwords')"
+                                id="password_lg"
+                                class="form-control"
+                            />
+                        </div>
+                        <div class="w-full flex items-center justify-center">
+                            <button type="submit" class="btn btn-primary mx-auto max-w-full w-full">
+                                {{ langweb("fe.login") }}
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -640,6 +688,9 @@ $(document).ready(function () {
             $(".root-popupshow").removeClass("active");
         }
     });
+    $(document).on("click", "ul.nav.main-menu li a", function () {
+        $('.subpage-content .subpagecontent-header').text(`${$(this).find('span:first-child').text()}`)
+    })
 });
 export default {
     name: "Header_city",
@@ -730,6 +781,7 @@ export default {
             ],
             rightPaneActive: false,
             currentDateTime: '',
+            loginModalOpen:false
         };
     },
     mounted() {
@@ -860,6 +912,7 @@ export default {
         },
         login(e) {
             e.preventDefault();
+            console.log('test')
             this.axios
                 .post(this.api_login, {
                     username: this.username_lg,
@@ -1151,8 +1204,7 @@ export default {
         },
         showMain(event) {
             var id = Number(event.target.getAttribute("data_id"));
-            const title = event.target.textContent;
-            this.tabTitle = title;
+            console.log(id)
             if (id === 1) {
                 this.tabSelected = "tab1";
             } else if (id === 2) {
