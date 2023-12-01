@@ -2,121 +2,54 @@
     <div class="wraper-root">
         <main class="page-content w-ba">
             <section class="toggle-section">
-                <div class="container main-tab">
-                    <button
-                        class="toggle-btn casino-toggle"
-                        v-bind:class="{ active: tabSelected == 'tab1' }"
-                        v-on:click="changeTab('tab1')"
-                    >
-                        <img src="../assets/img/elements/btn-casino-woman1.png" class="element left" alt="">
-                        <img src="../assets/img/elements/btn-casino-woman2.png" class="element right" alt="">
-                        <span class="category"
-                            >{{ langweb("fe.livecasino") }}
-                            &nbsp;
-                            <!-- <font-awesome-icon
-                                    icon="fa-solid fa-caret-down"
-                                    class="icon-down"
-                            /> -->
-                        </span>
-                        <p>최고의 카지노 제공업체를 플레이하세요</p>
-                    </button>
-                    <button
-                        class="toggle-btn slot-toggle"
-                        v-bind:class="{ active: tabSelected == 'tab2' }"
-                        v-on:click="changeTab('tab2')"
-                    >
-                        <img src="../assets/img/elements/btn-slot-char1.png" class="element left" alt="">
-                        <img src="../assets/img/elements/btn-slot-char2.png" class="element right" alt="">
-                        <span class="category">
-                            <!-- <font-awesome-icon
-                                    icon="fa-solid fa-caret-down"
-                                    class="icon-down"
-                                /> -->
-                            &nbsp; {{ langweb("fe.slotgame") }}</span
-                        >
-                        <p>최고의 슬롯 제공업체를 플레이하세요</p>
-                    </button>
+                <div class="container">
+                    <div class="main-tab">
+                        <a href="javascript:void(0)" @click="changeTab('tab1')">
+                            <img src="../assets/img/elements/casino-img.png" alt="">
+                            <div class="box-bg">
+                                <div class="box-text left">
+                                    <div>라이브카지노<i class="fa-solid fa-arrow-right-long"></i></div>
+                                    <span>세계 최고의 카지노 게임들을 만나보세요.</span>
+                                </div>
+                                <img src="../assets/img/elements/casino-button-bg.png" alt="">
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)" @click="changeTab('tab2')">
+                            <img src="../assets/img/elements/slot-img.png" alt="">
+                            <div class="box-bg">
+                                <div class="box-text right">
+                                    <div><i class="fa-solid fa-arrow-left-long"></i>슬롯 게임</div>
+                                    <span>최고의 슬롯 게임에서 잭팟을 도전하세요.</span>
+                                </div>
+                                <img src="../assets/img/elements/slot-button-bg.png" alt="">
+                            </div>
+                        </a>
+                    </div> 
                 </div>
                 <div class="tab-content-toogle game-list">
                     <section class="game-provider">
                         <div class="container max-width-gib">
                             <div class="tab1" v-if="tabSelected === 'tab1'">
                                 <div class="casino-section sc-section">
-                                    <div class="dflex-ac-jc w-100">
-                                        <a
-                                            class="sc-btn w-ba"
-                                            :class="{
-                                                active: index === hoveredIndex,
-                                                '': index !== hoveredIndex
-                                            }"
-                                            style="animation-delay: 0s"
-                                            v-for="(
-                                                item, index
-                                            ) in listGameCasino"
-                                            v-bind:key="index"
-                                            v-on:mouseover="
-                                                this.gameHover(index)
-                                            "
-                                            v-on:mouseleave="
-                                                this.gameHoverRemove()
-                                            "
-                                        >
-                                            <div class="g-panel w-ba">
-                                                <div class="g-cont">
-                                                    <img
-                                                        class="g-img"
-                                                        :src="item.image3"
-                                                        style="/*width: 215px*/"
-                                                    />
-                                                    <button
-                                                        type="button"
-                                                        v-if="token === null"
-                                                        @click="
-                                                            showModal = true
-                                                        "
-                                                        class="play-btn btn-yellow"
-                                                    >
-                                                        {{ langweb("fe.play") }}
-                                                    </button>
-                                                    <button
-                                                        type="button"
-                                                        v-else-if="
-                                                            item.maintenance ==
-                                                            1
-                                                        "
-                                                        @click="
-                                                            getMaintenance()
-                                                        "
-                                                        class="play-btn btn-yellow"
-                                                    >
-                                                        {{ langweb("fe.play") }}
-                                                    </button>
-                                                    <button
-                                                        type="button"
-                                                        class="play-btn btn-yellows"
-                                                        v-else
-                                                        @click="
-                                                            getGameProcess(
-                                                                item.vender,
-                                                                item.code,
-                                                                1
-                                                            )
-                                                        "
-                                                    >
-                                                        {{ langweb("fe.play") }}
-                                                    </button>
-                                                    <div class="g-info">
-                                                        <img
-                                                            class="g-logo"
-                                                            :src="item.image2"
-                                                        />
-                                                        <span class="g-name">{{
-                                                            item.title
-                                                        }}</span>
-                                                    </div>
+                                    <div class="w-100 game-card-parent casino">
+                                        <a href="javascript:void(0)" v-for="(item, index) in listGameCasino" :key="index" class="game-card animate__animated animate__fadeIn">
+                                            <div class="game-card-body">
+                                                <img :src="item.image3" alt="">
+                                            </div>  
+                                            <div class="game-card-overlay">
+                                                <div class="game-title">
+                                                    <img :src="item.image2" alt="">
+                                                    <h6>레드골드</h6>
                                                 </div>
-
-                                                <div class="glass"></div>
+                                                <button type="button" class=""  v-if="token === null" @click="showModal = true">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
+                                                <button type="button" class="" v-else-if="item.maintenance == 1" @click="getMaintenance()">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
+                                                <button type="button" class="" v-else @click=" getGameProcess(item.vender,item.code,1)">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
                                             </div>
                                         </a>
                                     </div>
@@ -124,8 +57,8 @@
                             </div>
                             <div class="tab2" v-if="tabSelected === 'tab2'">
                                 <div class="slot-section sc-section active">
-                                    <div class="dflex-ac-jc w-100">
-                                        <a
+                                    <div class="game-card-parent slot w-100">
+                                        <!-- <a
                                             class="sc-btn w-ba"
                                             style="animation-delay: 0s"
                                             v-for="(
@@ -140,14 +73,6 @@
                                                         :src="item.image3"
                                                         style="margin: auto"
                                                     />
-                                                    <!-- <img
-                                                        class="g-img"
-                                                        :src="
-                                                            'http://adm.chanel01.com/' +
-                                                            item.image3
-                                                        "
-                                                        style="margin: auto"
-                                                    /> -->
                                                     <button
                                                         type="button"
                                                         v-if="token === null"
@@ -188,6 +113,26 @@
                                                     }}</span>
                                                 </div>
                                                 <div class="glass"></div>
+                                            </div>
+                                        </a> -->
+                                        <a href="javascript:void(0)" v-for="(item, index) in listGameSlot" :key="index" class="game-card animate__animated animate__fadeIn">
+                                            <div class="game-card-body">
+                                                <img :src="item.image3" alt="">
+                                            </div>  
+                                            <div class="game-card-overlay">
+                                                <div class="game-title">
+                                                    <img :src="item.image2" alt="">
+                                                    <h6>레드골드</h6>
+                                                </div>
+                                                <button type="button" class=""  v-if="token === null" @click="showModal = true">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
+                                                <button type="button" class="" v-else-if="item.maintenance == 1" @click="getMaintenance()">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
+                                                <button type="button" class="" :data_name="item.title" :data_id="item.code" v-else @click="showItemGame">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
                                             </div>
                                         </a>
                                     </div>
@@ -1543,7 +1488,7 @@ export default {
                     type: "casino",
                     image1: null,
                     image2: require("@/assets/img/providers/logo/redgold.png"),
-                    image3: require("@/assets/img/providers/casino/game/redgold.jpg"),
+                    image3: require("@/assets/img/providers/casino/redgold.png"),
                     image4: null,
                     image5: null,
                     image6: null,
@@ -1560,7 +1505,7 @@ export default {
                     type: "casino",
                     image1: null,
                     image2: require("@/assets/img/providers/logo/evolution.png"),
-                    image3: require("@/assets/img/providers/casino/game/evolution.jpg"),
+                    image3: require("@/assets/img/providers/casino/evolution.png"),
                     image4: null,
                     image5: null,
                     image6: null,
@@ -1577,7 +1522,7 @@ export default {
                     type: "casino",
                     image1: null,
                     image2: require("@/assets/img/providers/logo/dreamgaming.png"),
-                    image3: require("@/assets/img/providers/casino/game/dream-gaming.jpg"),
+                    image3: require("@/assets/img/providers/casino/dreamgaming.png"),
                     image4: null,
                     image5: null,
                     image6: null,
@@ -1594,7 +1539,7 @@ export default {
                     type: "casino",
                     image1: null,
                     image2: require("@/assets/img/providers/logo/pragmatic.png"),
-                    image3: require("@/assets/img/providers/casino/game/pragmatic.jpg"),
+                    image3: require("@/assets/img/providers/casino/pragmatic.png"),
                     image4: null,
                     image5: null,
                     image6: null,
@@ -1611,7 +1556,7 @@ export default {
                     type: "casino",
                     image1: null,
                     image2: require("@/assets/img/providers/logo/asiagaming.png"),
-                    image3: require("@/assets/img/providers/casino/game/asiagaming.jpg"),
+                    image3: require("@/assets/img/providers/casino/asiagaming.png"),
                     image4: null,
                     image5: null,
                     image6: null,
@@ -1628,7 +1573,7 @@ export default {
                     type: "casino",
                     image1: null,
                     image2: require("@/assets/img/providers/logo/sexygaming.png"),
-                    image3: require("@/assets/img/providers/casino/game/sexy-gaming.jpg"),
+                    image3: require("@/assets/img/providers/casino/sexygaming.png"),
                     image4: null,
                     image5: null,
                     image6: null,
@@ -1655,8 +1600,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot03.png",
                     type: "slot",
                     image1: "images/2023/05/152056-ag2.png",
-                    image2: "images/2023/05/162811-6.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-pragmatic.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/pragmatic.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-pragmatic.png"),
                     image4: "images/2023/05/154734-ag2.png",
                     image5: "images/2023/05/122316-ASIA_S.png",
                     image6: "images/2023/06/131719-Pragmatic.png",
@@ -1672,8 +1617,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot44.png",
                     type: "slot",
                     image1: "images/2023/05/152107-bgaming.png",
-                    image2: "images/2023/05/162820-7.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-cq9.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/cq9.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-cq9.png"),
                     image4: "images/2023/05/154746-aristocrat.png",
                     image5: "images/2023/05/122323-ASPECT_S.png",
                     image6: "images/2023/06/131746-CQ9.png",
@@ -1689,8 +1634,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot29.png",
                     type: "slot",
                     image1: "images/2023/05/152132-bbtech.png",
-                    image2: "images/2023/05/162920-9.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-boongo.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/boongo.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-boongo.png"),
                     image4: "images/2023/05/154810-bbtech.png",
                     image5: "images/2023/05/122346-BBTECH.png",
                     image6: "images/2023/06/131817-Boongo.png",
@@ -1706,8 +1651,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot51.png",
                     type: "slot",
                     image1: "images/2023/05/152150-cq9.png",
-                    image2: "images/2023/05/162926-10.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-spearhead.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/spearhead.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-spearhead.png"),
                     image4: "images/2023/05/154821-bco.png",
                     image5: "images/2023/05/122358-BGAMING.png",
                     image6: "images/2023/06/131833-spear-head.png",
@@ -1723,8 +1668,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot38.png",
                     type: "slot",
                     image1: "images/2023/05/152210-dreamtech.png",
-                    image2: "images/2023/05/162933-11.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-calamba.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/kalamba.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-kalamba.png"),
                     image4: "images/2023/05/154836-betsoft.png",
                     image5: "images/2023/05/122409-BOOONGO.png",
                     image6: "images/2023/06/131855-Calamba.png",
@@ -1740,8 +1685,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot12.png",
                     type: "slot",
                     image1: "images/2023/05/152244-game30000.png",
-                    image2: "images/2023/05/162941-12.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-playson.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/playson.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-playson.png"),
                     image4: "images/2023/05/154846-bgaming.png",
                     image5: "images/2023/05/122422-CQ9.png",
                     image6: "images/2023/06/131909-playson.png",
@@ -1757,8 +1702,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot41.png",
                     type: "slot",
                     image1: "images/2023/05/152307-game407000.png",
-                    image2: "images/2023/05/162950-13.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-realtiming.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/realtimegaming.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-realtimegaming.png"),
                     image4: "images/2023/05/154855-cq9.png",
                     image5: "images/2023/05/122438-DREAMTECH.png",
                     image6: "images/2023/06/131923-real-timing.png",
@@ -1774,8 +1719,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot19.png",
                     type: "slot",
                     image1: "images/2023/05/152342-gameart.png",
-                    image2: "images/2023/05/162957-14.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-gamefish.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/gamefish.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-gamefish.png"),
                     image4: "images/2023/05/154906-dream2.png",
                     image5: "images/2023/05/122448-EVOPLAY.png",
                     image6: "images/2023/06/131937-Gamefish-Global.png",
@@ -1791,8 +1736,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot18.png",
                     type: "slot",
                     image1: "images/2023/05/152353-habanero.png",
-                    image2: "images/2023/05/163005-15.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-evoplay.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/evoplay.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-evoplay.png"),
                     image4: "images/2023/05/154920-evoplay.png",
                     image5: "images/2023/05/122457-GAMEART.png",
                     image6: "images/2023/06/132031-Evo-play.png",
@@ -1808,8 +1753,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot16.png",
                     type: "slot",
                     image1: "images/2023/05/152410-genesis.png",
-                    image2: "images/2023/05/163012-16.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-august.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/august.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-august.png"),
                     image4: "images/2023/05/154933-gameart.png",
                     image5: "images/2023/05/122505-GENESIS.png",
                     image6: "images/2023/06/132046-August.png",
@@ -1825,8 +1770,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot15.png",
                     type: "slot",
                     image1: "images/2023/05/152429-pgsoft.png",
-                    image2: "images/2023/05/163024-17.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-1x2.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/1x2.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-1x2.png"),
                     image4: "images/2023/05/154945-genesis.png",
                     image5: "images/2023/05/122519-HABANERO.png",
                     image6: "images/2023/06/132100-1X2-game.png",
@@ -1842,8 +1787,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot14.png",
                     type: "slot",
                     image1: "images/2023/05/152444-nolimit.png",
-                    image2: "images/2023/05/163032-18.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-revolver.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/revolver.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-revolver.png"),
                     image4: "images/2023/05/154957-habanero.png",
                     image5: "images/2023/05/122532-MANNA.png",
                     image6: "images/2023/06/132119-revolver.png",
@@ -1859,8 +1804,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot13.png",
                     type: "slot",
                     image1: "images/2023/05/152458-playngo.png",
-                    image2: "images/2023/05/163048-19.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-quickspin.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/quickspin.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-quickspin.png"),
                     image4: "images/2023/05/155012-isoftbet.png",
                     image5: "images/2023/05/122545-MICRO_S.png",
                     image6: "images/2023/06/132135-quick-speak.png",
@@ -1876,8 +1821,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot10.png",
                     type: "slot",
                     image1: "images/2023/05/152511-playson.png",
-                    image2: "images/2023/05/163057-20.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-nolimitcity.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/nolimitcity.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-nolimitcity.png"),
                     image4: "images/2023/05/155025-micro2.png",
                     image5: "images/2023/05/122604-PG.png",
                     image6: "images/2023/06/132152-No-Limit-City.png",
@@ -1893,8 +1838,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot08.png",
                     type: "slot",
                     image1: "images/2023/05/152537-playstar.png",
-                    image2: "images/2023/05/163107-21.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-elk.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/elk.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-elk.png"),
                     image4: "images/2023/05/155037-nolimit.png",
                     image5: "images/2023/05/122616-PLAYNGO.png",
                     image6: "images/2023/06/132215-elk.png",
@@ -1910,8 +1855,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot02.png",
                     type: "slot",
                     image1: "images/2023/05/152628-redtiger.png",
-                    image2: "images/2023/05/163138-24.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-playngo.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/playngo.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-playngo.png"),
                     image4: "images/2023/05/155123-playstar.png",
                     image5: "images/2023/05/122655-REALTIME.png",
                     image6: "images/2023/06/132259-play-and-go.png",
@@ -1927,8 +1872,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot49.png",
                     type: "slot",
                     image1: "images/2023/05/152643-relax.png",
-                    image2: "images/2023/05/163154-16.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-redtiger.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/redtiger.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-redtiger.png"),
                     image4: "images/2023/05/155136-png.png",
                     image5: "images/2023/05/122712-SKYWIND_S.png",
                     image6: "images/2023/06/132316-red-tiger.png",
@@ -1944,8 +1889,8 @@ export default {
                     image: "https://alche3.com/assets/images/buttons/game_slot43.png",
                     type: "slot",
                     image1: "images/2023/05/152655-skywind2.png",
-                    image2: "images/2023/05/163201-21.jpg",
-                    image3: require("@/assets/img/providers/slot/slot-img-netent.jpg"),
+                    image2: require("@/assets/img/providers/slot/provider-logo/netent.png"),
+                    image3: require("@/assets/img/providers/slot/slot-img-netent.png"),
                     image4: "images/2023/05/155153-ttg.png",
                     image5: "images/2023/05/122727-STARGAME.png",
                     image6: "images/2023/06/132335-netent.png",
