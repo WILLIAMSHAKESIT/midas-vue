@@ -651,6 +651,20 @@
                 </div>
             </div>
         </div>
+        <!-- login modal -->
+        <div class="modal login">
+            <div class="modal_bg"></div>
+            <div class="_modal _login">
+                <div class="md_top"><img src="sbase/assets/imgs/rg/logo.png?v=1699801200"> <a class="close_btn"><img src="sbase/assets/imgs/rg/ico_20.svg?v=1699801200" style="border-bottom-color: rgba(0, 0, 0, 0);"></a></div>
+                <div class="loginbox">
+                    <form name="fLogin">
+                        <span class="eng">LOGIN</span> <span class="kor">로그인</span> <input type="text" name="uid" maxlength="12" required="required" placeholder="회원아이디"> <input type="password" name="pwd" maxlength="15" placeholder="비밀번호"> 
+                        <div bis_skin_checked="1" class="btns"><button type="submit" class="btn btn1">로그인</button> <a class="join_btn btn">회원가입</a></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- login modal -->
         <!-- End modal maintenance game -->
     </div>
 

@@ -348,6 +348,9 @@
                     method="POST"
                 >
                     <div class="container">
+                        <div class="logo">
+                            <img src="../assets/img/navbar-logo.png" alt="">
+                        </div>
                         <div class="mt-4 mb-4">
                             <h1 class=""> {{ langweb("fe.login") }}</h1>
                         </div>

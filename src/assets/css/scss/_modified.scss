@@ -263,3 +263,21 @@
         }
     }
 }
+
+.subpage-wrapper{
+    &.login{
+        .subpage-container{
+            height: 500px !important;
+        }
+        .container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            .logo{
+                width: 177px;
+                margin: 0 auto;
+            }
+        }
+    }
+}

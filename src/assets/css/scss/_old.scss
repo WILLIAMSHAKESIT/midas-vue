@@ -673,26 +673,21 @@ header .top-form .user-money .money {
     display: none;
 }
 .subpage-wrapper.login .subpage-container{
-    max-width: 400px;
+    max-width: 810px;
     height: 350px !important;
 }
 .subpage-wrapper.login .container{
-    max-width: 100% !important;
+    max-width: 50% !important;
 }
 .subpage-wrapper .form-control {
-    background-color: #2e1f08;
+    background-color: #101010;
     color: #fff;
 }
 .subpage-wrapper.show {
     display: block;
 }
 .subpage-wrapper .subpage-container {
-    background: linear-gradient(
-        1deg,
-        rgb(130, 89, 6) 0%,
-        rgb(254, 205, 115) 48%,
-        rgb(125, 84, 2) 100%
-    );
+    background: linear-gradient(1deg, rgb(43 43 43) 0%, rgb(93 93 93) 48%, rgb(30 30 30) 100%);
     width: 66.6666666667%;
     height: calc(100% - 50px);
     position: absolute;
@@ -706,16 +701,11 @@ header .top-form .user-money .money {
     z-index: 30;
     right: -13px;
     top: -13px;
-    background: linear-gradient(
-        180deg,
-        rgb(130, 4, 28) 0%,
-        rgb(145, 34, 34) 48%,
-        rgb(255, 76, 76) 100%
-    );
-    width: 34px;
-    height: 34px;
-    border-radius: 5px;
-    border: 1px solid #ff4747;
+    background: linear-gradient(180deg, rgb(113 79 29) 0%, rgb(197 166 100) 48%, rgb(131 97 45) 100%);
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    border: 1px solid #b3955d;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -723,7 +713,11 @@ header .top-form .user-money .money {
     box-shadow: 0 0 5px #000;
 }
 .subpage-wrapper .subpage-container .subpage-inner {
-    background: radial-gradient(circle, rgb(57, 38, 0) 0%, rgb(0, 0, 0) 100%);
+    // background: radial-gradient(circle, rgb(57, 38, 0) 0%, rgb(0, 0, 0) 100%);
+    background-image: url(../img/bgs/modal-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     width: calc(100% - 10px);
     height: calc(100% - 10px);
     position: absolute;
@@ -932,11 +926,7 @@ button:active,
 }
 
 .btn-primary {
-    background: linear-gradient(
-        179deg,
-        #f9b318 0%,
-        rgb(61, 43, 2) 100%
-    ) !important;
+    background: linear-gradient(180deg, #fff48e 0%, #b7945a 49%, #6f4d1c 100%) !important;
     border: unset !important;
 }
 
@@ -956,7 +946,7 @@ button:active,
 }
 
 .form-control {
-    border: 1px solid rgb(85 61 21) !important;
+    border: 1px solid rgb(49 49 49) !important;
 }
 .form-control:focus {
     outline: unset !important;
@@ -1140,7 +1130,7 @@ button:active,
 }
 .sign-up div h1 {
     text-align: center;
-    font-size: 4em;
+    font-size: 2em;
     font-weight: 900;
     background: -webkit-linear-gradient(#ffe3b7, #f9b318);
     -webkit-background-clip: text;

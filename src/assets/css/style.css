@@ -235,9 +235,9 @@ body {
     bottom: 0;
     background: linear-gradient(
         180deg,
-        rgb(47, 28, 7) 0%,
-        rgb(74, 64, 55) 51%,
-        rgb(17, 9, 0) 100%
+        rgb(107 76 21) 0%,
+        rgb(224 178 89) 51%,
+        #856400 100%
     );
     z-index: 10;
 }
