@@ -335,14 +335,11 @@ body {
     width: 89px;
 }
 .btn-gold {
-    background: linear-gradient(
-        1deg,
-        rgb(130, 89, 6) 0%,
-        rgb(254, 205, 115) 48%,
-        rgb(125, 84, 2) 100%
-    );
+    background-image: url(../img/bgs/btn_bg.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     border-radius: 4px !important;
-    font-weight: 500;
+    color: #FEE98E !important;
 }
 .btn-gold:hover {
     filter: brightness(1.1);
@@ -373,12 +370,12 @@ body {
 .nav a span:first-child {
     font-size: 17px;
     font-weight: 700;
-    color: #ffc053;
+    color: #999999;
 }
 .nav a span:last-child {
-    color: #82642f;
+    color: #999999;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 100;
     text-transform: uppercase;
 }
 @keyframes lgABigAnim {
@@ -834,22 +831,23 @@ body {
     opacity: 1;
 }
 .page-content {
-    background-image: url(../img/bg/main-bg.jpg);
+    /* background-image: url(../img/bg/main-bg.jpg); */
     height: -moz-fit-content;
     height: fit-content;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 70px 0;
+    padding: 12px 0;
     padding-bottom: 50px;
+    background-color: #1d1d1d;
 }
 .game-list {
     display: flex;
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    margin-top: 8rem;
-    margin-bottom: 8rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 .titchange_pass {
     margin-top: 30px;
@@ -1351,11 +1349,12 @@ body {
     margin: 0 15px;
 }
 .board-panel .content {
-    border: 1px solid #ff9309;
+    border: 1px solid #bb9b54;
     height: calc(100% - 60px);
     width: 100%;
     border-radius: 7px;
     padding: 10px;
+    position: relative;
 }
 .board-panel table {
     width: 100%;
@@ -1421,6 +1420,10 @@ body {
     background-size: cover;
     position: relative;
     z-index: 1;
+    background-color: #1d1d1d;
+}
+.footer-section hr{
+    display: none;
 }
 .footer-section:after {
     width: 956px;
@@ -1430,6 +1433,7 @@ body {
     transform: translateX(-50%);
     border-radius: 50%;
     box-shadow: 0 5px 10px rgb(0 0 0 / 25%);
+    display: none;
 }
 .footer-section .copyright-text {
     width: 100%;
@@ -1778,7 +1782,7 @@ body {
     height: 50px;
 }
 .rolling-realtime {
-    border: 1px solid #ff9309;
+    border: 1px solid #bb9b54;
     background: radial-gradient(
         circle,
         rgb(75, 64, 49) 0%,
@@ -3268,25 +3272,12 @@ body::-webkit-scrollbar-thumb {
 .substring_content_tb,
 .substring_content_tbs,
 .substring_content_tbss {
-    /* position: fixed;
-    top: 0px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 9999;
-    /* padding-top: 50px; 
-    overflow: auto; */
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* left: 0; */
-    /* right: 0; */
-    /* bottom: 0; */
     background: rgba(0, 0, 0, 0.2);
     z-index: 9999;
-    /* padding-top: 50px; */
     overflow: auto;
 }
 .flex_popup {

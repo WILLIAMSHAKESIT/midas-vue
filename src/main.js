@@ -5,6 +5,7 @@ import store from "./store";
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueCookies from 'vue3-cookies'
+// import Popover from 'vue-js-popover'
 
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
@@ -14,9 +15,81 @@ import Paginate from "vue3-paginate-z";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faUserSecret, faPiggyBank, faVault, faBell, faCommentDots, faCaretDown, faUserTie, faUnlockAlt, faBarsStaggered, faCaretUp, faRightFromBracket, faWindowRestore, faCircleUser, faHandHoldingDollar, faMoneyBill, faMoneyBill1Wave, faReply, faHandshake, faGift, faPlay, faTrophy, faCrown, faTableList, faMoneyBillTransfer, faUserGear, faCircleInfo, faClover, faFireFlameCurved, faBomb, faTablet, faPuzzlePiece, faClockRotateLeft, faMagnifyingGlassPlus, faComments, faEye } from '@fortawesome/free-solid-svg-icons'
+import { 
+            faUserSecret, 
+            faPiggyBank, 
+            faVault, 
+            faBell, 
+            faCommentDots, 
+            faCaretDown, 
+            faUserTie, 
+            faUnlockAlt, 
+            faBarsStaggered,
+            faCaretUp, 
+            faRightFromBracket, 
+            faWindowRestore, 
+            faCircleUser, 
+            faHandHoldingDollar, 
+            faMoneyBill, 
+            faMoneyBill1Wave, 
+            faReply, 
+            faHandshake, 
+            faGift, 
+            faPlay, 
+            faTrophy, 
+            faCrown, 
+            faTableList, 
+            faMoneyBillTransfer, 
+            faUserGear, 
+            faCircleInfo, 
+            faClover, 
+            faFireFlameCurved, 
+            faBomb, 
+            faTablet, 
+            faPuzzlePiece, 
+            faClockRotateLeft, 
+            faMagnifyingGlassPlus, 
+            faComments, 
+            faEye
+        } 
+    from '@fortawesome/free-solid-svg-icons'
 import VueMobileDetection from 'vue-mobile-detection'
-library.add(faUserSecret, faPiggyBank, faVault, faBell, faCommentDots, faCaretDown, faUserTie, faUnlockAlt, faBarsStaggered, faCaretUp, faRightFromBracket, faWindowRestore, faCircleUser, faHandHoldingDollar, faMoneyBill, faMoneyBill1Wave, faReply, faHandshake, faGift, faPlay, faTrophy, faCrown, faTableList, faMoneyBillTransfer, faUserGear, faCircleInfo, faClover, faFireFlameCurved, faBomb, faTablet, faPuzzlePiece, faClockRotateLeft, faMagnifyingGlassPlus, faComments, faEye)
+library.add(faUserSecret, 
+            faPiggyBank, 
+            faVault, 
+            faBell, 
+            faCommentDots, 
+            faCaretDown, 
+            faUserTie, 
+            faUnlockAlt, 
+            faBarsStaggered, 
+            faCaretUp, 
+            faRightFromBracket, 
+            faWindowRestore, 
+            faCircleUser, 
+            faHandHoldingDollar, 
+            faMoneyBill, 
+            faMoneyBill1Wave, 
+            faReply, 
+            faHandshake, 
+            faGift, 
+            faPlay, 
+            faTrophy, 
+            faCrown, 
+            faTableList, 
+            faMoneyBillTransfer, 
+            faUserGear, 
+            faCircleInfo, 
+            faClover, 
+            faFireFlameCurved, 
+            faBomb, 
+            faTablet, 
+            faPuzzlePiece, 
+            faClockRotateLeft, 
+            faMagnifyingGlassPlus, 
+            faComments, 
+            faEye
+        )
 
 // createApp(App).mount('#app')
 const app = createApp(App)
@@ -27,6 +100,7 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(VueSweetalert2)
 app.use(Paginate)
 app.use(VueCookies);
+// app.use(Popover)
 
 var domain_web = 'https://api.chanel01.com/api/'
 

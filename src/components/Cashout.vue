@@ -2,7 +2,7 @@
     <form method="post"  @submit="cashout">
         <div class="modal-banner">
             <div class="banner-text">  최소 출금금액은 1,000입니다. 해당 금액보다 많아야 출금신청 가능합니다.</div>
-            <img src="../assets/img/banner/banner.jpg" alt="">
+            <!-- <img src="../assets/img/banner/banner.jpg" alt=""> -->
         </div>
         <div class="mb-2">
             <label for="">{{ langweb('fe.holdingamount')}}</label>

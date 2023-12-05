@@ -24,6 +24,7 @@
     </div>
 </template>
 <script>
+//css 
 import "./assets/css/style.css"
 import "./assets/css/style2.css"
 import "./assets/css/all.min.css"
@@ -31,6 +32,7 @@ import "./assets/css/animate.min.css"
 import "./assets/css/bootstrap.min.css"
 import "./assets/css/tailwind.css"
 import "./assets/css/aos.css"
+
 import Header_city from './components/Header.vue'
 import Footer_city from './components/Footer.vue'
 

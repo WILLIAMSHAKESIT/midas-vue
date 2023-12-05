@@ -5,7 +5,7 @@
                 <p><i class="fa-solid fa-circle-info text-yellow-400 mr-1"></i>입금계좌요청 후 쪽지를 확인해주세요.</p>
                 <p>최소 입금신청 금액은 10,000부터입니다. 꼭 확인하고 신청 하시기 바랍니다.</p>
             </div>
-            <img src="../assets/img/banner/banner.jpg" alt="">
+            <!-- <img src="../assets/img/banner/banner.jpg" alt=""> -->
         </div>
         <div class="mb-4">
             <label for="">{{ langweb('fe.holdingamount')}}</label>

@@ -1,6 +1,54 @@
 <template>
-    <footer class="footer-section w-ba" style="z-index: 1">
+    <footer class="footer-section w-ba">
         <div class="container max-width-gib">
+            <div class="footer-top">
+                <div class="left">
+                    <h6 class="title">MY PAGE</h6>
+                    <div class="btns">
+                        <a href="#">
+                            <img src="../assets/img/icons/footer-btn-1.png" alt="">
+                            <span>입금신청</span>
+                        </a>
+                        <a href="#">
+                            <img src="../assets/img/icons/footer-btn-2.png" alt="">
+                            <span>입금신청</span>
+                        </a>
+                        <a href="#">
+                            <img src="../assets/img/icons/footer-btn-3.png" alt="">
+                            <span>입금신청</span>
+                        </a>
+                        <a href="#">
+                            <img src="../assets/img/icons/footer-btn-4.png" alt="">
+                            <span>입금신청</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="mid">
+                    <img src="../assets/img/navbar-logo.png">
+                </div>
+                <div class="right">
+                    <h6 class="title">QUICK SERVICE</h6>
+                    <div>
+                        <ul>
+                            <li><a href="#">카지노</a></li>
+                            <li><a href="#">플레이앤고</a></li>
+                            <li><a href="#">블루프린트</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">프라그마틱</a></li>
+                            <li><a href="#">게임아트</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">하바네로</a></li>
+                            <li><a href="#">부운고</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">씨큐나인</a></li>
+                            <li><a href="#">PG소프트</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <hr>
                 <div class="provider-logo">

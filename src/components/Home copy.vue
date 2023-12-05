@@ -30,29 +30,29 @@
                     </div> 
                 </div>
                 <div class="tab-content-toogle game-list">
-                    <section class="game-provider">
-                        <div class="container">
+                    <!-- <section class="game-provider">
+                        <div class="container max-width-gib">
                             <div class="tab1" v-if="gameTab === 'casino'">
                                 <div class="casino-section sc-section">
                                     <div class="w-100 game-card-parent casino">
                                         <a href="javascript:void(0)" v-for="(item, index) in listGameCasino" :key="index" class="game-card animate__animated animate__fadeIn">
                                             <div class="game-card-body">
                                                 <img :src="item.image3" alt="">
-                                                <div class="game-card-overlay">
-                                                    <div class="game-title">
-                                                        <img :src="item.image2" alt="">
-                                                        <h6>{{item.title}}</h6>
-                                                    </div>
-                                                    <button type="button" class=""  v-if="token === null" @click="showModal = true">
-                                                        <i class="fa-solid fa-play"></i>
-                                                    </button>
-                                                    <button type="button" class="" v-else-if="item.maintenance == 1" @click="getMaintenance()">
-                                                        <i class="fa-solid fa-play"></i>
-                                                    </button>
-                                                    <button type="button" class="" v-else @click=" getGameProcess(item.vender,item.code,1)">
-                                                        <i class="fa-solid fa-play"></i>
-                                                    </button>
+                                            </div>  
+                                            <div class="game-card-overlay">
+                                                <div class="game-title">
+                                                    <img :src="item.image2" alt="">
+                                                    <h6>레드골드</h6>
                                                 </div>
+                                                <button type="button" class=""  v-if="token === null" @click="showModal = true">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
+                                                <button type="button" class="" v-else-if="item.maintenance == 1" @click="getMaintenance()">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
+                                                <button type="button" class="" v-else @click=" getGameProcess(item.vender,item.code,1)">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
                                             </div>
                                         </a>
                                     </div>
@@ -64,35 +64,28 @@
                                         <a href="javascript:void(0)" v-for="(item, index) in listGameSlot" :key="index" class="game-card animate__animated animate__fadeIn">
                                             <div class="game-card-body">
                                                 <img :src="item.image3" alt="">
-                                                <div class="game-card-overlay">
-                                                    <div class="game-title">
-                                                        <img :src="item.image2" alt="">
-                                                        <h6>레드골드</h6>
-                                                    </div>
-                                                    <button type="button" class=""  v-if="token === null" @click="showModal = true">
-                                                        <i class="fa-solid fa-play"></i>
-                                                    </button>
-                                                    <button type="button" class="" v-else-if="item.maintenance == 1" @click="getMaintenance()">
-                                                        <i class="fa-solid fa-play"></i>
-                                                    </button>
-                                                    <button type="button" class="" :data_name="item.title" :data_id="item.code" v-else @click="showItemGame">
-                                                        <i class="fa-solid fa-play"></i>
-                                                    </button>
-                                                </div>
                                             </div>  
+                                            <div class="game-card-overlay">
+                                                <div class="game-title">
+                                                    <img :src="item.image2" alt="">
+                                                    <h6>레드골드</h6>
+                                                </div>
+                                                <button type="button" class=""  v-if="token === null" @click="showModal = true">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
+                                                <button type="button" class="" v-else-if="item.maintenance == 1" @click="getMaintenance()">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
+                                                <button type="button" class="" :data_name="item.title" :data_id="item.code" v-else @click="showItemGame">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </button>
+                                            </div>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                </div>
-            </section>
-            <section class="contact-section">
-                <div class="container">
-                    <div>
-                        <!-- <img src="../assets/img/icons/telegram.svg" alt=""> -->
-                    </div>
+                    </section> -->
                 </div>
             </section>
             <input type="hidden" name="datacode" class="datacode" value="0" />
@@ -335,6 +328,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="board-panel notice">
                         <div class="header dflex-ac-jc w-b">
                             <div class="title-panel dflex-ac-jc mr-auto">
@@ -451,6 +445,9 @@
                                                 </div>
                                             </div>
                                         </td>
+                                        <!--  <td class="date-td">
+                                            {{ item.created_at.substring(0, 10)}}
+                                        </td> -->
                                     </tr>
                                 </tbody>
                             </table>
@@ -1249,19 +1246,12 @@ export default {
                     imgURL: require("@/assets/img/banner/banner-3.png")
                 }
             ],
-            selectedPopOver:null,
-            odometer: null,
         };
     },
     components: {
         Carousel,
         Slide
     },
-    // mounted(){
-    //     setTimeout(()=>{
-    //         odometer.innerHTML = 456;
-    //     }, 1000);
-    // },
     created() {
         if (this.token !== null) {
             this.getListnotifiHome();

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff48e"/>
+      <stop offset="0.49" stop-color="#b7945a"/>
+      <stop offset="1" stop-color="#6f4d1c"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="사각형_26" data-name="사각형 26" class="cls-1" width="40" height="40" transform="translate(450 1184)"/>
+    </clipPath>
+  </defs>
+  <g id="마스크_그룹_2" data-name="마스크 그룹 2" class="cls-2" transform="translate(-450 -1184)">
+    <g id="account_balance_black_24dp" transform="translate(450 1184)">
+      <path id="패스_1" data-name="패스 1" class="cls-3" d="M0,0H40V40H0Z"/>
+      <path id="패스_2" data-name="패스 2" class="cls-1" d="M10.833,16.667H7.5V28.333h3.333Zm10,0H17.5V28.333h3.333ZM35,31.667H3.333V35H35Zm-4.167-15H27.5V28.333h3.333ZM19.167,5.433,27.85,10H10.483l8.683-4.567m0-3.767L3.333,10v3.333H35V10Z"/>
+    </g>
+  </g>
+</svg>
